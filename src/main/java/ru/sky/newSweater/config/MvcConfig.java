@@ -6,6 +6,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.io.File;
 import java.util.ArrayList;
 
 @Configuration
@@ -20,8 +21,9 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        String currentPath = String.format("%s%s%s", System.getProperty("user.dir"), File.separatorChar, uploadPath + "/");
         registry.addResourceHandler("/img/**")
-                .addResourceLocations("file:///" + uploadPath + "/");
+                .addResourceLocations("file:///" + currentPath + "/");
         registry.addResourceHandler("/static/**")
                 .addResourceLocations("classpath:/static/");
 

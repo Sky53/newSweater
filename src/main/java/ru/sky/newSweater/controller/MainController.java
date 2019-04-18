@@ -57,14 +57,14 @@ public class MainController {
         Message message = new Message(text, tag, user);
 
         if (file != null && !file.getOriginalFilename().isEmpty()) {
-            File uploadDir = new File(uploadPath);
+            File uploadDir = new File(String.format("%s%s%s", System.getProperty("user.dir"), File.separatorChar, uploadPath));
             if (!uploadDir.exists()) {
                 uploadDir.mkdir();
             }
-
+            String currentPath = uploadDir.getPath();
             String uuidFile = UUID.randomUUID().toString();
             String resultFileName = uuidFile + "." + file.getOriginalFilename();
-            file.transferTo(new File(uploadPath + "/" + resultFileName));
+            file.transferTo(new File(currentPath + "/" + resultFileName));
 
             message.setFileName(resultFileName);
         }
