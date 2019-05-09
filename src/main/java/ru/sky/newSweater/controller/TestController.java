@@ -21,4 +21,9 @@ public class TestController {
     public String testController() {
         return "Ok, it's working";
     }
+
+    @GetMapping("/tets2")
+    public String testController2() {
+        return "Ok, it's working";
+    }
 }
