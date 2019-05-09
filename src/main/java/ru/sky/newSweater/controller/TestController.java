@@ -17,13 +17,4 @@ public class TestController {
     public String getUserDir() {
         return String.format("%s%s%s", System.getProperty("user.dir"), File.separatorChar, path);
     }
-    @GetMapping("/tets")
-    public String testController() {
-        return "Ok, it's working";
-    }
-
-    @GetMapping("/tets2")
-    public String testController2() {
-        return "Ok, it's working";
-    }
 }
